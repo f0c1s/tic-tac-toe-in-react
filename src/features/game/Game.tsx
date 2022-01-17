@@ -41,10 +41,10 @@ export default function Game() {
             setGameState("over");
         }
 
-        if(gridState.every(row => row.every(col => col !== CellRenderOptions.empty))) {
+        if(gridState.every(row => row.every(col => col !== CellRenderOptions.empty)) && gameState === "running") {
             setGameState("draw")
         }
-    }, [gridState]);
+    }, [gridState, gameState]);
 
     function onEmptyCellClick(row: number, col: number) {
         // console.log(row, col, turn);
