@@ -3,6 +3,7 @@ import "./game.css";
 import Grid from "../grid/Grid";
 import {CellRenderOptions} from "../cell/Cell";
 import GameOver from "../gameover/GameOver";
+import GameDraw from "../gamedraw/GameDraw";
 
 export default function Game() {
     const rows: number = 3;
@@ -39,6 +40,10 @@ export default function Game() {
         if (gameover) {
             setGameState("over");
         }
+
+        if(gridState.every(row => row.every(col => col !== CellRenderOptions.empty))) {
+            setGameState("draw")
+        }
     }, [gridState]);
 
     function onEmptyCellClick(row: number, col: number) {
@@ -59,6 +64,7 @@ export default function Game() {
     function resetGame() {
         setGameState("running");
         setGridState(initialGridState);
+        setTurn(CellRenderOptions.X);
     }
 
     return <div className={"game"}>
@@ -67,5 +73,6 @@ export default function Game() {
         </div>
         <Grid onEmptyCellClick={onEmptyCellClick} grid={gridState}/>
         {gameState === "over" && <GameOver turn={turn}/>}
+        {gameState === "draw" && <GameDraw />}
     </div>;
 }
