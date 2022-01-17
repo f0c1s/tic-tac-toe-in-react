@@ -1,0 +1,25 @@
+.cell {
+    line-height: 10vh;
+    text-align: center;
+    font-size: 56px;
+    user-select: none;
+    cursor: initial;
+    width: inherit;
+    height: inherit;
+}
+
+.cell-empty {
+    cursor: pointer;
+}
+
+.cell-empty:hover {
+    box-shadow: 0 0 2px black;
+}
+
+.cell-X {
+    color: red;
+}
+
+.cell-O {
+    color: blue;
+}
