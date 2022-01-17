@@ -1,7 +1,7 @@
 .cell {
-    line-height: 10vh;
+    line-height: 100px;
     text-align: center;
-    font-size: 56px;
+    font-size: 72px;
     user-select: none;
     cursor: initial;
     width: inherit;

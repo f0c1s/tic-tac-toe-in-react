@@ -9,13 +9,14 @@ export enum CellRenderOptions {
 
 export interface CellProps {
     render: CellRenderOptions;
+    onEmptyCellClick: Function;
 }
 
-export default function Cell({render}: CellProps) {
+export default function Cell({render, onEmptyCellClick}: CellProps) {
     let toRender;
     switch (render) {
         case CellRenderOptions.empty:
-            toRender = <div className={"cell cell-empty"}>&nbsp;</div>;
+            toRender = <div className={"cell cell-empty"} onClick={() => onEmptyCellClick()}>&nbsp;</div>;
             break;
         case CellRenderOptions.X:
             toRender = <div className={"cell cell-X"}>X</div>;

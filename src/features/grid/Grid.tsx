@@ -3,20 +3,17 @@ import "./grid.css";
 import Cell, {CellRenderOptions} from "../cell/Cell";
 
 interface GridProps {
-    rows: number;
-    cols: number;
-    fillWith: CellRenderOptions;
+    onEmptyCellClick: Function;
+    grid: any[]
 }
 
-export default function Grid({rows, cols, fillWith}: GridProps) {
-    const grid = Array(rows)
-        .fill(0)
-        .map((_, r) =>
-            Array(cols)
-                .fill(0)
-                .map((_, c) => {
-                        return <div className={"grid-cell"} key={`grid-cell-${r}-${c}`}>
-                            <Cell render={fillWith}/>
+export default function Grid({onEmptyCellClick, grid}: GridProps) {
+
+    const renderGrid = grid
+        .map((row, rowIndex) =>
+            row.map((fillWith: CellRenderOptions, colIndex: number) => {
+                        return <div className={"grid-cell"} key={`grid-cell-${rowIndex}-${colIndex}`}>
+                            <Cell render={fillWith} onEmptyCellClick={() => onEmptyCellClick(rowIndex, colIndex)}/>
                         </div>;
                     }
                 )
@@ -25,7 +22,7 @@ export default function Grid({rows, cols, fillWith}: GridProps) {
     return (
         <div className={"grid-container"}>
             <div className={"grid"}>
-                {grid}
+                {renderGrid}
             </div>
         </div>
     );
