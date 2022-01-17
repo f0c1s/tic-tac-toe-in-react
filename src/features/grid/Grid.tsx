@@ -4,11 +4,10 @@ import Cell, {CellRenderOptions} from "../cell/Cell";
 
 interface GridProps {
     onEmptyCellClick: Function;
-    grid: any[]
+    grid: CellRenderOptions[][];
 }
 
 export default function Grid({onEmptyCellClick, grid}: GridProps) {
-
     const renderGrid = grid
         .map((row, rowIndex) =>
             row.map((fillWith: CellRenderOptions, colIndex: number) => {
