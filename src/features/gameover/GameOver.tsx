@@ -7,7 +7,6 @@ interface GameOverProps {
 
 export default function GameOver({turn}: GameOverProps) {
     return <div className={"game-over"}>
-        <h2>Game over</h2>
-        <h3>{turn === CellRenderOptions.X ? "O" : "X"} won</h3>
+        <div>{turn === CellRenderOptions.X ? "O" : "X"} won</div>
     </div>;
 }

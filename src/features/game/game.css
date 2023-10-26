@@ -1,5 +1,18 @@
 .game {
-    /*padding: 1vh 1vw;*/
-    /*border: thin solid silver;*/
-    /*min-height: 30vh;*/
+    display: flex;
+    flex-direction: column;
+}
+
+.game-controls {
+    display: flex;
+    justify-content: space-between;
+    margin: 2vh 0;
+}
+
+.game-controls button {
+    border-radius: 0;
+    border: thin solid var(--text);
+    background-color: var(--background);
+    color: var(--text);
+    cursor: pointer;
 }

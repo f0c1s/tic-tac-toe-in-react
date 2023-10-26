@@ -1,5 +1,7 @@
 .cell {
-    line-height: 100px;
+    display: flex;
+justify-content: center;
+align-items: center;
     text-align: center;
     font-size: 72px;
     user-select: none;
@@ -13,13 +15,14 @@
 }
 
 .cell-empty:hover {
-    box-shadow: 0 0 2px black;
+    box-shadow: 0 0 2px var(--background);
+    background-color: var(--background);
 }
 
 .cell-X {
-    color: red;
+    color: #e74c3c;
 }
 
 .cell-O {
-    color: blue;
+    color: #6363ee;
 }
