@@ -1,13 +1,12 @@
 .cell {
-    display: flex;
-justify-content: center;
-align-items: center;
+    height: 50mm;
+    width: 50mm;
+
+    font-size: 60px;
+    line-height: 1rem;
+    place-content: center;
     text-align: center;
-    font-size: 72px;
-    user-select: none;
-    cursor: initial;
-    width: inherit;
-    height: inherit;
+    border: 1px solid var(--primary-color-accent);
 }
 
 .cell-empty {
@@ -15,8 +14,8 @@ align-items: center;
 }
 
 .cell-empty:hover {
-    box-shadow: 0 0 2px var(--background);
-    background-color: var(--background);
+    box-shadow: 0 0 2px var(--primary-color-accent);
+    background-color: var(--primary-color-accent);
 }
 
 .cell-X {

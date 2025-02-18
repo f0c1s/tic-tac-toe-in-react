@@ -1,14 +1,3 @@
-.grid-container {
-}
-
-.grid {
-    min-width: 330px;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(20vh, 1fr));
-    grid-gap: 3vh;
-}
-
-.grid-cell {
-    border: thin solid var(--text);
-    height: 20vh;
+div.grid.grid3{
+    gap: 1vh;
 }

@@ -1,9 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./game.css";
 import Grid from "../grid/Grid";
-import {CellRenderOptions} from "../cell/Cell";
+import { CellRenderOptions } from "../cell/Cell";
 import GameOver from "../gameover/GameOver";
 import GameDraw from "../gamedraw/GameDraw";
+
+type GameStateT = "running" | "over" | "draw";
 
 export default function Game() {
     const rows: number = 3;
@@ -13,7 +15,7 @@ export default function Game() {
             .map(_ => CellRenderOptions.empty));
     const [gridState, setGridState] = useState(initialGridState);
     const [turn, setTurn] = useState(CellRenderOptions.X);
-    const [gameState, setGameState] = useState("running");
+    const [gameState, setGameState] = useState<GameStateT>("running");
 
     function toggleTurn() {
         if (turn === CellRenderOptions.X) {
@@ -65,13 +67,15 @@ export default function Game() {
         setTurn(CellRenderOptions.X);
     }
 
-    const info = gameState === "over" ? turn === CellRenderOptions.X ? "O won" : "X won" : gameState === "draw" ? "Draw" : "playing";
-    return (<div className={"game"}>
-        <div className={"game-controls"}>
-            <span className={"game-info"}>{info}</span>
-            <button type="button" onClick={() => resetGame()}>reset</button>
+    const info = gameState === "over" ? <GameOver turn={turn} /> : gameState === "draw" ? <GameDraw /> : <div>playing</div>;
+    return (<>
+        <div className="flex vflex">
+            <div>{info}</div>
+            <div>
+                <button type="button" onClick={() => resetGame()}>reset</button>
+            </div>
+            <Grid onEmptyCellClick={onEmptyCellClick} grid={gridState} />
         </div>
-        <Grid onEmptyCellClick={onEmptyCellClick} grid={gridState}/>
 
-    </div>);
+    </>);
 }
